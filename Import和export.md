@@ -121,6 +121,94 @@ getUsefulContents("http://www.example.com", data => {
 
 ## Export
 
+export语句用于从给定文件（或模块）导出函数和对象。
 
+## 语法
+
+```
+export { name1, name2, …, nameN };
+export { variable1 as name1, variable2 as name2, …, nameN };
+export let name1, name2, …, nameN; // also var
+export let name1 = …, name2 = …, …, nameN; // also var, const
+
+export default expression;
+export default function (…) { … } // also class, function*
+export default function name1(…) { … } // also class, function*
+export { name1 as default, … };
+
+export * from …;
+export { name1, name2, …, nameN } from …;
+export { import1 as name1, import2 as name2, …, nameN } from …;
+```
+
+***nameN***
+
+导出的标识符（用来被其他脚本的 import 导入）
+
+## 描述
+
+有两种不同的导出方式，每种方式对应于上述的一种语法：
+
+* 命名导出：
+
+```
+export { myFunction }; // 导出一个函数声明
+export const foo = Math.sqrt(2); // 导出一个常量
+```
+
+* 默认导出 (每个脚本只能有一个)：
+
+```
+export default myFunctionOrClass // 或者 'export default class {}'
+// 这里没有分号
+```
+
+对于只导出一部分值来说，命名导出的方式很有用。在导入时候，可以使用相同的名称来引用对应导出的值。
+
+关于默认导出方式，每个模块只有一个默认导出。一个默认导出可以是一个函数，一个类，一个对象等。当最简单导入的时候，这个值是将被认为是”入口”导出值。
+
+## 示例
+
+### 命名导出
+
+在这个模块里，我们可以这么导出：
+
+```
+// module "my-module.js"
+export function cube(x) {
+  return x * x * x;
+}
+const foo = Math.PI + Math.SQRT2;
+export { foo };
+```
+
+这样的话，在其它脚本 (cf. import)，我们可以这样使用：
+
+```
+import { cube, foo } from 'my-module.js';
+console.log(cube(3)); // 27
+console.log(foo);    // 4.555806215962888
+```
+
+### 默认导出
+
+如果我们只想导出一个简单的值或者想在模块中保留一个候选值，就可以使用默认导出：
+
+```
+// module "my-module.js"
+export default function cube(x) {
+  return x * x * x;
+}
+```
+
+然后，在另一个脚本中，默认的导出值就可以被简单直接的导入：
+
+```
+// module "my-module.js"
+import cube from 'my-module';
+console.log(cube(3)); // 27​​​​​
+```
+
+(完)
 
 [MIT License](https://opensource.org/licenses/mit-license.html). ©  [Running Lee](mailto:lihui870920@gmail.com)
