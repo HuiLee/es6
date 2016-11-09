@@ -7,6 +7,7 @@ super 属性和 super[expr] 表达式在 任何 类 与  对象字面量 的 方
 ## 语法
 
 > super([arguments]); // 访问父对象上的构造函数
+
 > super.functionOnParent([arguments]); // 访问对象上的方法
 
 ## 描述
