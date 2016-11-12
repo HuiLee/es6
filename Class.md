@@ -97,6 +97,76 @@ console.log(BiggerTripple.tripple(3));   // 81（不会受父类被实例化的�
 console.log(tp.tripple());               // 'tp.tripple is not a function'.
 ```
 
+## extends
+
+extends关键词被用在类声明或者类表达式以创建一个其他类的子类。
+
+### 语法
+
+> class ChildClass extends ParentClass { ... }
+
+### 描述
+
+extends关键词用来集成一个普通类以及内建对象。
+
+扩展的.prototype必须是一个Object 或者 null。
+
+### 示例
+
+#### 使用extends
+
+第一个例子是根据名为Polygon类创建一个名为Square的类。 你可以从实战演示看到这个例子。
+
+```
+class Square extends Polygon {
+  constructor(length) {
+    // 这里把length传参给父类的构造方法
+    // 作为父类Polygon的宽和高
+    super(length, length);
+    // 备注：在衍生类中使用this前必须先调用super()方法
+    // 忽视这一点将会导致一个引用错误
+    this.name = 'Square';
+  }
+
+  get area() {
+    return this.height * this.width;
+  }
+
+  set area(value) {
+    this.area = value;
+  } 
+}
+```
+
+#### 使用extends扩展内建对象
+
+这个示例继承了Date对象。 你可以从实战演示看到这个例子。
+
+```
+class myDate extends Date {
+  constructor() {|
+    super();
+  }
+
+  getFormattedDate() {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return this.getDate() + "-" + months[this.getMonth()] + "-" + this.getFullYear();
+  }
+}
+```
+
+#### 继承null
+
+可以像扩展普通类一样扩展null，但是新对象的原型将不会继承 Object.prototype.
+
+```
+class nullExtends extends null {
+  constructor() {}
+}
+
+Object.getPrototypeOf(nullExtends); // Function.prototype
+Object.getPrototypeOf(nullExtends.prototype) // null
+```
 
 ### Links
 
