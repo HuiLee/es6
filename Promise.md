@@ -78,7 +78,7 @@ pending状态的promise对象既可转换为带着一个成功值的fulfilled �
 
 添加肯定和否定回调到当前 promise, 返回一个新的 promise, 将以回调的返回值 来resolve.
 
-### demo
+### 示例
 
 #### 创建Promise
 
@@ -86,7 +86,7 @@ pending状态的promise对象既可转换为带着一个成功值的fulfilled �
 
 这里通过p1.then方法的满足回调，简单的输出了promise的满足过程，这些输出显示了该方法的同步部分是如何和promise的异步完成解耦的。
 
-```
+```js
 <!--标注：下面略微修改了英文版的示例，主要是执行3次testPromise()的效果，如果您有疑问，可以参看英文的说明文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise-->
 <div id="log"></div>
 <script>
@@ -129,7 +129,7 @@ pending状态的promise对象既可转换为带着一个成功值的fulfilled �
 
 这个例子展示了如何用promise报告一个XMLHttpRequest的成功或失败。
 
-```
+```js
 'use strict';
 
 // A-> $http function is implemented in order to follow the standard Adapter pattern
