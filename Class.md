@@ -24,7 +24,7 @@ javascript类
 
 #### 使用构造方法
 
-```
+```js
 class Square extends Polygon {
   constructor(length) {
     // 在这里调用父类的"length",赋值给矩形的"width"和"height"。
@@ -47,13 +47,13 @@ class Square extends Polygon {
 
 如果没有显式定义，会默认添加一个空的constructor方法。对于基类"Base classes"，默认构造方法如下:
 
-```
+```js
 constructor() {}
 ```
 
 对于派生类"Derived classes" ，默认构造方法如下:
 
-```
+```js
 constructor(...args) {
   super(...args);
 }
@@ -75,7 +75,7 @@ static关键字定义一个类中的静态方法
 
 下面的例子说明了这几点：静态方法是怎么在一个类中被定义的；类中的静态成员是可以被继承的；静态方法什么时候可以被调用，什么时候不可以。
 
-```
+```js
 class Tripple {
   static tripple(n) {
     n = n || 1;
@@ -117,7 +117,7 @@ extends关键词用来集成一个普通类以及内建对象。
 
 第一个例子是根据名为Polygon类创建一个名为Square的类。 你可以从实战演示看到这个例子。
 
-```
+```js
 class Square extends Polygon {
   constructor(length) {
     // 这里把length传参给父类的构造方法
@@ -142,7 +142,7 @@ class Square extends Polygon {
 
 这个示例继承了Date对象。 你可以从实战演示看到这个例子。
 
-```
+```js
 class myDate extends Date {
   constructor() {|
     super();
@@ -159,7 +159,7 @@ class myDate extends Date {
 
 可以像扩展普通类一样扩展null，但是新对象的原型将不会继承 Object.prototype.
 
-```
+```js
 class nullExtends extends null {
   constructor() {}
 }

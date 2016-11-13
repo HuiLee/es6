@@ -18,7 +18,7 @@ super 属性和 super[expr] 表达式在 任何 类 与  对象字面量 的 方
 
 以下代码片段来自于 classes sample:
  
-```
+```js
 class Polygon {
   constructor(height, width) {
     this.name = 'Polygon';
@@ -57,7 +57,7 @@ class Square extends Polygon {
 
 你也可以用 super 调用父类的 静态方法。
 
-```
+```js
 class Human {
   constructor() {}
   static ping() {
@@ -78,7 +78,7 @@ Computer.pingpong(); // 'ping pong'
 
 你不能使用 delete 操作符 加 super.prop 或者 super[expr] 去删除父类的属性, 这样做会抛出 ReferenceError.
 
-```
+```js
 class Base {
   constructor() {}
   foo() {}
@@ -97,7 +97,7 @@ new Derived().delete(); // ReferenceError: invalid delete involving 'super'.
 
 当使用 Object.defineProperty 定义一个属性为不可写时, super 将不能重写这个属性的值.
 
-```
+```js
 class X {
   constructor() {
     Object.defineProperty(this, "prop", {
@@ -120,7 +120,7 @@ console.log(x.prop); // 1
 
 Super 也可以用在使用字面量进行对象初始化（ object initializer / literal ）。 在下面的例子中，两个对象各定义了一个方法。在第二个对象中, 我们使用 super 调用了第一个对象中的方法。 当然，这需要我们先利用 Object.setPrototypeOf() 将第二个对象的原型设为第一个对象, 然后才能够使用 super  调用到对象1上的method1.
 
-```
+```js
 var obj1 = {
   method1() {
     console.log("method 1");

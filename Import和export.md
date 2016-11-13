@@ -8,7 +8,7 @@ import语句 用于从外部模块、其他脚本中导入函数、对象或者�
 
 ### 语法
 
-```
+```js
 import defaultMember from "module-name"; 
 import * asname from "module-name"; 
 import { member } from "module-name"; 
@@ -96,7 +96,7 @@ name参数用于接收导出成员的对象名称。member参数指定独立成�
 
 导入另一个文件，以便辅助处理AJAX JSON请求。
 
-```
+```js
 // --file.js--
 function getJSON(url, callback) {
   let xhr = new XMLHttpRequest();
@@ -125,7 +125,7 @@ export语句用于从给定文件（或模块）导出函数和对象。
 
 ## 语法
 
-```
+```js
 export { name1, name2, …, nameN };
 export { variable1 as name1, variable2 as name2, …, nameN };
 export let name1, name2, …, nameN; // also var
@@ -151,14 +151,14 @@ export { import1 as name1, import2 as name2, …, nameN } from …;
 
 * 命名导出：
 
-```
+```js
 export { myFunction }; // 导出一个函数声明
 export const foo = Math.sqrt(2); // 导出一个常量
 ```
 
 * 默认导出 (每个脚本只能有一个)：
 
-```
+```js
 export default myFunctionOrClass // 或者 'export default class {}'
 // 这里没有分号
 ```
@@ -173,7 +173,7 @@ export default myFunctionOrClass // 或者 'export default class {}'
 
 在这个模块里，我们可以这么导出：
 
-```
+```js
 // module "my-module.js"
 export function cube(x) {
   return x * x * x;
@@ -184,7 +184,7 @@ export { foo };
 
 这样的话，在其它脚本 (cf. import)，我们可以这样使用：
 
-```
+```js
 import { cube, foo } from 'my-module.js';
 console.log(cube(3)); // 27
 console.log(foo);    // 4.555806215962888
@@ -194,7 +194,7 @@ console.log(foo);    // 4.555806215962888
 
 如果我们只想导出一个简单的值或者想在模块中保留一个候选值，就可以使用默认导出：
 
-```
+```js
 // module "my-module.js"
 export default function cube(x) {
   return x * x * x;
@@ -203,7 +203,7 @@ export default function cube(x) {
 
 然后，在另一个脚本中，默认的导出值就可以被简单直接的导入：
 
-```
+```js
 // module "my-module.js"
 import cube from 'my-module';
 console.log(cube(3)); // 27​​​​​
