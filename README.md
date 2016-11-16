@@ -12,7 +12,7 @@
   
   - **结构性设计模式** ：Decorator，Facade, Flyweight, Adapter, Proxy
   
-  - **行为设计模式** ：Iterator, Mediator, Observer, Visitor
+  - **行为设计模式** ：命令模式, 中介者模式, 观察者模式, 状态模式，策略模式
  
 - **实战应用** ：总结不同应用场景下的代码构建风格
   
