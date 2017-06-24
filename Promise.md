@@ -240,6 +240,11 @@ $http(mdnAPI)
 
 另一个用了Promise和XMLHttpRequest加载一个图像的例子可在MDN GitHub promise-test 中找到。 你也可以 see it in action。每一步都有注释可以让你详细的跟随了解Promise和XHR架构。
 
+
+### 参考链接
+
+[迷你书，一个很棒的分析](http://liubin.org/promises-book/#introduction)
+
 ### License
 
 [MIT License](https://opensource.org/licenses/mit-license.html). ©  [Running Lee](mailto:lihui870920@gmail.com)
