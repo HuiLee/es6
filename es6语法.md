@@ -5,29 +5,29 @@
 以前使用var声明变量会有一个变量提升的问题，这样导致变量的作用域不可控，使用let变量声明和const常量声明可以使函数作用域降到块区间，举个变量提升的列子：
 
 ```js
-function goHome(tool){
-	if(tool){
-		var car = 'By Car';
-		console.log(car)
-	}else{
-		var cookie = 'FYI';
-		console.log(car)
-	}
+function goHome(tool) {
+    if (tool) {
+        var car = 'By Car';
+        console.log(car)
+    } else {
+        var cookie = 'FYI';
+        console.log(car)
+    }
 }
 ```
 
 执行 goHome() 得到 undefined，实际是变量提升所致
 
 ```js
-function goHome(tool){
-   var car，cookie；
-	if(tool){
-	   car = 'By Car';
-		console.log(car)
-	}else{
-		cookie = 'FYI';
-		console.log(car)
-	}
+function goHome(tool) {
+    var car, cookie;
+    if (tool) {
+        car = 'By Car';
+        console.log(car)
+    } else {
+        cookie = 'FYI';
+        console.log(car)
+    }
 }
 ```
 
@@ -37,15 +37,15 @@ function goHome(tool){
 * const 声明的变量必须有初始值，同一作用域不可以重复声明该变量，也不可重新赋值，用于静态变量声明
 
 ```js
-function goSchool(tool){
-	let type;
-	const teacher = 'Mrs Hu';
-	if(tool == 'Car'){
-		type = 'By Car';
-	}else{
-		type = 'By Bus';
-	}
-	console.log(`${teacher} goes school ${type}`);
+function goSchool(tool) {
+    let type;
+    const teacher = 'Mrs Hu';
+    if (tool == 'Car') {
+        type = 'By Car';
+    } else {
+        type = 'By Bus';
+    }
+    console.log(`${teacher} goes school ${type}`);
 }
 ```
 
@@ -60,20 +60,20 @@ function goSchool(tool){
 使用规则是反引号里面加${expression} 变量即可，该字面量是动态替换参数，原样输出结果，清晰直观
 
 ```js
-function sleep(){
-	let timer = '12:30';
-	console.log(`I go to bed at ${timer}`);
+function sleep() {
+    let timer = '12:30';
+    console.log(`I go to bed at ${timer}`);
 }
 ```
 告别字符串加号连接变量时代
 
 ```js
-function getHtml(code){
-	let style = '1px solid ###ccc';
-	let html = `<div style="${style}">
-					<p>This is ${code} code, which is greet!</p>
-				</div>`;
-	return html;
+function getHtml(code) {
+    let style = '1px solid ###ccc';
+    let html = `<div style="${style}">
+    <p>This is ${code} code, which is greet!</p>
+</div>`;
+    return html;
 }
 ```
 
