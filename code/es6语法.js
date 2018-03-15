@@ -51,3 +51,27 @@ function getHtml(code) {
 }
 
 console.log(getHtml('HTML'));
+
+const array = ['Name', 'Sex', 'Address'];
+const x = array[0];
+const y = array[1];
+const z = array[2];
+console.log(x, y, x);
+
+const [x1, y1, z1] = ['Name', 'Sex', 'Address'];
+console.log(x1, y1, z1);
+
+let things = ['red', 'basketball', 'paperclip', 'green', 'computer', 'earth', 'udacity', 'blue', 'dogs'];
+const [one, , , two, , , , three] = things;
+const colors = `List of Colors
+1. ${one}
+2. ${two}
+3. ${three}`;
+console.log(colors);
+
+const name = "Hui Lee", sex = 'Man', address = 'HeNan China';
+const IdCard = {
+    name: name,
+    sex: sex,
+    address: address
+};

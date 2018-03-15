@@ -81,7 +81,73 @@ function getHtml(code) {
 
 ## 解构数组
 
-## 对象字面量
+通常开发中，我们需要从数组和对象中取值复制，对于数组而言，我们一边使用索引取参数，对于对象我们常使用属性做键值取参数，通常模式下操作比较繁琐
+
+```js
+const array = ['Name', 'Sex', 'Address'];
+const x = array[0];
+const y = array[1];
+const z = array[2];
+console.log(x, y, x);
+```
+
+ES6中的使用方式
+
+```js
+const [x1, y1, z1] = ['Name', 'Sex', 'Address'];
+console.log(x1, y1, z1);
+```
+
+这样就可以从赋值左侧上的数组中获取元素，其位置是一一对应的
+
+```js
+let things = ['red', 'basketball', 'paperclip', 'green', 
+'computer', 'earth', 'udacity', 'blue', 'dogs'];
+const [one,,,two,,,,three] = things;
+const colors = `List of Colors
+1. ${one}
+2. ${two}
+3. ${three}`;
+console.log(colors);
+```
+
+## 对象字面量及方法
+
+以前我们在声明对象变量的过程中，经常属性名和变量名相同，重复编写相同变量
+
+```js
+const name = "Hui Lee", sex = 'Man', address = 'HeNan China';
+const IdCard = {
+    name: name,
+    sex: sex,
+    address: address
+};
+```
+
+ES6中可以做到简单如下方式,属性和变量相同只需要写一遍就自动扩展了
+
+```js
+const name = "Hui Lee", sex = 'Man', address = 'HeNan China';
+let IdCard = {
+    name,
+    sex,
+    address
+};
+```
+
+常规的对象中声明方法我们需要使用function，而ES6中可以省略function方法体，这样写起来就非常的简单明了
+
+```js
+const name = "Hui Lee", sex = 'Man', address = 'HeNan China';
+let IdCard = {
+    name,
+    sex,
+    address，
+    getProfile(){...}
+};
+```
+
+getProfile方法可以简约到这种程度，非常直观
 
 ## 迭代
 
