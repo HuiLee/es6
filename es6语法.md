@@ -151,11 +151,108 @@ getProfile方法可以简约到这种程度，非常直观
 
 ## 迭代
 
+迭代指的是字符，数组，对象的循环遍历
+
 ## For循环系列
+
+常见的for循环遍历，一般包括两个条件计数器和退出条件，常见的模式如下
+
+```js
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+```
+
+另外一种使用方法for...in循环
+
+```js
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (const index in digits) {
+    //迭代器中的index每次会被重置，可以声明为const
+    console.log(index);
+    console.log(digits[index]);
+}
+```
+
+for...in的用法比较局限，可用于数组对象循环，索引方式取值，提升的空间有限
 
 ### For...Of循环
 
+for...of的出现是为了优化提升上一个版本的for和for...in的缺陷，for...of循环用于访问任何可迭代的数据类型，其操作方式和for...in一样，不需要使用键值索引了
+
+```js
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (const digit of digits) {
+	  if(digit == 3){
+	  		continue;
+	  }
+    console.log(digit);
+}
+```
+
+干净清爽的一塌糊涂
+
+牛刀小试
+
+```js
+const days = ['sunday', 'monday', 'tuesday', 'wednesday', 
+'thursday', 'friday', 'saturday'];
+
+for(let day of days){
+    day = day.charAt(0).toUpperCase() + day.slice(1)
+    console.log(day);
+}
+```
+
 ## 展开...运算符
+
+三个连续的...能够将字面量对象展开为多个元素，其作用是展开元素
+
+```js
+const books = ["Python", "DevOps", "BigData", "Kafka"];
+console.log(...books);
+```
+
+展开运算符的另一个作用是拼接数组，之前使用的是concat方法，请看下面demo
+
+```js
+const fruits = ["apples", "bananas", "pears"];
+
+const vegetables = ["corn", "potatoes", "carrots"];
+
+//const older = fruits.concat(vegetables);
+
+const produce = [...fruits,...vegetables];
+
+console.log(produce);
+```
+
+拼接数组实在是简单至极
+
+## ...剩余参数
+
+剩余参数也用三个连续的点 ( ... ) 表示，使你能够将不定数量的元素表示为数组，在使用数组赋值或声明数组参数时作用比较突出
+
+```js
+const order = ['Zhengzhou', 'BeiJing', 'ShenZhen', 'NanJin', 'WuHan'];
+const [zhengzhou, beijing, ...qita] = order;
+console.log(zhengzhou, beijing, qita);
+```
+
+举个参数数组列子
+
+```js
+function getCity(...cities) {
+    for (city of cities) {
+        console.log(city);
+    }
+}
+getCity(order);
+```
+
+本小节与优达学城同步结束 :smile: :smile:
+
+
 
 
 

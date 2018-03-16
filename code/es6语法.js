@@ -75,3 +75,25 @@ const IdCard = {
     sex: sex,
     address: address
 };
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (const index in digits) {
+    console.log(index);
+    console.log(digits[index]);
+}
+
+const order = ['Zhengzhou', 'BeiJing', 'ShenZhen', 'NanJin', 'WuHan'];
+const [zhengzhou, beijing, ...qita] = order;
+console.log(zhengzhou, beijing, qita);
+
+function getCity(...cities) {
+    for (city of cities) {
+        console.log(city);
+    }
+}
+
+getCity(order);
