@@ -74,4 +74,103 @@ const person = new Person('girl');
 person.who();
 ```
 
+改造之后的类其实依然还是函数
+
+```js
+console.log(typeof Person === 'function'); // true
+```
+
+## 静态方法的声明
+
+声明静态方法只需要在方法名之前加上static即可，这样使用类型可以直接访问
+
+```js
+class CrazyLeer {
+    constructor(name) {
+        this.name = name;
+    }
+
+    static me() {
+        return 'this is a super man.';
+    }
+}
+
+console.log(CrazyLeer.me());
+```
+
+## 类的扩展
+
+ES5中的类的扩展需要使用call方法来实现，多次继承之后会造成理解上的困惑，加上其特有的原型属性的扩展方式确实带来了不少的困惑，ES6中新增加了super和extends两个关键字，让JavaScript的面向对象走上了正常的路子，多年的绿林好汉招安转正了，其表现形式如下：
+
+```js
+class Person {
+    constructor(name, sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    work() {
+        return `${this.name} can work well.`
+    }
+
+    face() {
+        if (this.sex === 'man') {
+            return 'handsome';
+        } else {
+            return 'pretty';
+        }
+    }
+}
+
+class Man extends Person {
+    constructor(name, sex, address = 'China') {
+        super(name, sex);
+        this.address = address;
+    }
+
+    work() {
+        let face = super.face();
+        return `The ${face} ${super.work()}`;
+    }
+}
+
+const man = new Man('Hui Lee', 'man');
+
+console.log(man.work());
+```
+
+因为是原型扩展，所以扩展类在构造的时候需要优先使用super，先完成原型的集成再进行扩展，super必须出现在this之前，否则会抛出异常
+
+牛刀小试
+
+```js
+class Vehicle {
+	constructor(color = 'blue', wheels = 4, horn = 'beep beep') {
+		this.color = color;
+		this.wheels = wheels;
+		this.horn = horn;
+	}
+
+	honkHorn() {
+		console.log(this.horn);
+	}
+}
+
+class Bicycle extends Vehicle {
+    constructor(color,wheels=2,horn='honk honk'){
+         super(color,wheels,horn);
+    }
+    honkHorn() {
+		console.log(this.horn);
+	}
+}
+
+const myVehicle = new Vehicle();
+myVehicle.honkHorn(); // beep beep
+const myBike = new Bicycle();
+myBike.honkHorn(); // honk honk
+```
+
+ES6函数结业了:simple_smile:
+
 

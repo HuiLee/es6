@@ -14,9 +14,13 @@ getProfile();
 
 getProfile({name: 'Bruce Lee', age: 30});
 
-class Person {
+class Leer {
     constructor(sex) {
         this.sex = sex;
+    }
+
+    static me() {
+        console.log('this is super man.');
     }
 
     who() {
@@ -25,8 +29,55 @@ class Person {
     }
 }
 
-const person = new Person('girl');
-person.who();
+const leer = new Leer('girl');
+leer.who();
+
+console.log(typeof leer);
+
+class CrazyLeer {
+    constructor(name) {
+        this.name = name;
+    }
+
+    static me() {
+        return 'this is a super man.';
+    }
+}
+
+console.log(CrazyLeer.me());
+
+class Person {
+    constructor(name, sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    work() {
+        return `${this.name} can work well.`
+    }
+
+    face() {
+        if (this.sex === 'man') {
+            return 'handsome';
+        } else {
+            return 'pretty';
+        }
+    }
+}
+
+class Man extends Person {
+    constructor(name, sex, address = 'China') {
+        super(name, sex);
+        this.address = address;
+    }
 
 
+    work() {
+        let face = super.face();
+        return `The ${face} ${super.work()}`;
+    }
+}
 
+const man = new Man('Hui Lee', 'man');
+
+console.log(man.work());
