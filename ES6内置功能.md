@@ -33,4 +33,83 @@ const programmers = {
 console.log(programmers);
 ```
 
+## 迭代器协议和可迭代协议
+
+可迭代协议用来定义和自定义对象的迭代行为
+
+```js
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (const digit of digits) {
+  console.log(digit);
+}
+```
+
+迭代器方法（可通过常量[Symbol.iterator]获得）是一个无参数的函数，返回的是迭代器对象。迭代器对象是遵循迭代器协议的对象。
+
+迭代器协议用来定义对象生成一系列值得标准方式，实际上就是现在有了定义对象如何迭代的流程。通过执行`.next()`方法来完成这一流程。
+
+当对象执行`.next()`方法时，就变成了迭代器。`.next()`方法是无参数函数，返回具有两个属性的对象：
+
+1. `value:` 表示对象内置了序列的下个值得数据
+
+2. 表示迭代器是否已经循环访问完值序列的布尔值
+
+* 如果done为true，则迭代器已达到值序列的末尾处
+* 如果done为false，者迭代器能够生成值序列中的另一值
+
+小试牛刀
+
+
+```js
+const digits = [0, 1, 2, 3, 4, 5, 6];
+const arrayIterator = digits[Symbol.iterator]();
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+console.log(arrayIterator.next());
+```
+
+迭代次数为length+1
+
+## Set集合
+
+一种类似于数组的内置对象，Set类的条目不允许重复，不能单独被访问,如果存在的话会自动移除重复条目
+
+```js
+const games = new Set(['Hui Lee', 'Lee Hui', 'Hui Lee']);
+console.log(games);
+```
+
+添加条目`.add()`,删除条目`.delete()`,清楚条目`.clear()`,返回条目总数使用`.size`,检查是否存在某个条目使用`.has()`,检索所有值使用`.values()`，其返回的是SetIterator
+
+小试牛刀
+
+```js
+const games = new Set(['QQ', 'WeChat', 'Sina']);
+console.log(games);
+
+games.add('Mi');
+games.delete('Sina');
+console.log(games);
+
+// console.log(games.clear());
+
+console.log(games.has('Mi'));
+console.log(games.size);
+console.log(games.values());
+
+const Ha = games.values();
+console.log(Ha.next());
+console.log(Ha.next());
+console.log(Ha.next());
+console.log(Ha.next());
+
+for(const game of games){
+    console.log(game);
+}
+```
 
