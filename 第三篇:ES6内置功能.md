@@ -117,5 +117,78 @@ for(const game of games){
 
 如果说Set类似于数组，那么Map就类似于对象，因为Map存储键值对的对象，键和值都可以是对象，原始值和二者的结合。
 
+### 增删改查
+
+下面通过实例进行创建，修改，删除，清空操作
+
+```js
+const employees = new Map();
+console.log(employees);
+employees.set('lihui870920@gmail.com', {
+    name: 'Hui Lee',
+    age: 30
+});
+console.log(employees.has('lihui870920@gmail.com'));
+employees.set('848335648@qq.com', {
+    name: 'Crazy Lee',
+    age: 29
+});
+console.log(employees.get('848335648@qq.com'));
+employees.set('848335648@qq.com', {
+    name: 'Crazy Lee',
+    age: 32
+});
+employees.delete('848335648@qq.com');
+employees.clear();
+console.log(employees);
+```
+
+通过`new`进行创建，通过 `.set()` 进行添加和修改，通过`.has()`判断是否存在某个对象，通过`.get()`获取对象，通过`.delete()`进行删除，通过`.clear()`进行清空操作, 以上是对Map进行的基础操作，主要处理的目标是对象. 其中使用`.get()`获取的是键值对应的内容。
+
+### 迭代处理
+
+Map遵守可迭代协议和迭代器协议，所以可使用下面三种操作方式进行数据处理：
+
+1. 使用Map的默认迭代器循环访问每个键或值
+2. 使用`for...of`进行循环遍历
+3. 使用Map的`.forEach()`方法循环访问每个键值
+
+#### 使用MapIterator
+
+在Map上使用`.keys()`和`.values()`方法将返回新的迭代对象，叫做MapIterator. 我们可以使用迭代器对象存储在新的变量中，并使用`.next()`循环访问每个键或值。
+
+下面对上面三种方式做一个演示操作：
+
+```js
+const projects = new Map();
+
+projects.set('php',{year:20,desc:'Top7'});
+projects.set('java',{year:30,desc:'Top1'});
+projects.set('python',{year:23,desc:'Top3'});
+projects.set('nodejs',{year:8,desc:'Top6'});
+
+console.log(projects);
+
+console.log(projects.keys());
+
+console.log(projects.values());
+
+//1.使用Map的默认迭代器循环访问每个键或值
+console.log(projects.next());
+
+//2.使用`for...of`进行循环遍历
+for(const project of projects){
+    const [category,content] = project;
+    console.log(category,content);
+}
+
+//3.使用Map的`.forEach()`方法循环访问每个键值
+projects.forEach(function (value, key, map) {
+    console.log(value,key,map);
+});
+```
+
+以上Map对象操作讲解完毕.**
+
 
 
