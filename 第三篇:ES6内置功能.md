@@ -188,7 +188,7 @@ projects.forEach(function (value, key, map) {
 });
 ```
 
-以上Map对象操作讲解完毕.**
+以上Map对象操作讲解完毕.
 
 
 
