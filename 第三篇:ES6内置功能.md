@@ -190,5 +190,98 @@ projects.forEach(function (value, key, map) {
 
 以上Map对象操作讲解完毕.
 
+## Promise
+
+Promise的作用式解决JS中异步调用的问题，使用流程图式的操作流程，其构造比较简单，使用`new Promise()`即可创建一个Promise的对象，其参数是两个闭包函数resolve，reject其实就是流程图中yes和no的处理，Promise逻辑体中只有一种结果输出，请看下面的展示
+
+```js
+const promise = new Promise(function (resolve, reject) {
+    // setTimeout(function () {
+    //     const success = {name: 'Hui Lee', address: 'ErQi'};
+    //     resolve(success);
+    // }, 1000);
+
+    setTimeout(function () {
+        const error = {msg: 'Ops, you had a problem'};
+        reject(error);
+    }, 3000);
+});
+
+promise.then(function (result) {
+    console.log(result);
+},function (error) {
+    console.log(error);
+});
+```
+
+分享一个链接，个人觉得分析的非常透彻，受益匪浅 [迷你书，一个很棒的分析](http://liubin.org/promises-book/#introduction)
+
+## Proxy
+
+这个没有深入的使用过，在Ionic的框架中使用过JS的代理，完成的是本地调试功能，如果后面使用过程中有深入接触这里再做深入的探讨，本知识点暂时跳过
+
+
+## 生成器
+
+我们在执行函数的过程中，JavaScript引擎会在函数的顶部启动，并运行每行代码，直到到达底部。
+
+现实中，我们在函数的执行过程中会需要中断函数的执行进行其他的操作，然后继续执行，为满足这样的需求ED6中提供一种新的函数，叫做generator(生成器)函数！
+
+生成器函数的定义规则：
+
+1. function* name(){...}
+2. function * name(){...}
+3. function *name(){...}
+
+无论*是在左边，中间，右面都是有效的，这样就完成了一个函数生成器的定义了。
+
+### 关键字yield
+
+关键字yield是ES6中新出现的关键字，只能用在生成器函数中，yield会导致生成器暂停下来
+
+
+```js
+function* superMan() {
+    const superStars = ['LiAn', 'FengXiaogang', 'ZhangYimou'];
+    for (const star of superStars) {
+        // console.log(star);
+        yield star;
+    }
+}
+
+// 获取迭代器，迭代次数为size+1
+const superLeer = superMan();
+
+console.log(superLeer.next());
+console.log(superLeer.next());
+```
+
+```js
+function* createSundae() {
+    const toppings = [];
+    
+    toppings.push(yield);
+    toppings.push(yield);
+    toppings.push(yield);
+
+    return toppings;
+}
+
+var it = createSundae();
+it.next('hot fudge');
+it.next('sprinkles');
+it.next('whipped cream');
+it.next();
+```
+
+```js
+{ value: undefined, done: false }
+{ value: undefined, done: false }
+{ value: undefined, done: false }
+{ value: [ 'sprinkles', 'whipped cream', undefined ],done: true }
+```
+
+上面的输出结果很迷人，值得细细思索。
+
 
 

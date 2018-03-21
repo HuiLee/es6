@@ -73,25 +73,80 @@ employees.clear();
 console.log(employees);
 
 const projects = new Map();
-projects.set('php',{year:20,desc:'Top7'});
-projects.set('java',{year:30,desc:'Top1'});
-projects.set('python',{year:23,desc:'Top3'});
-projects.set('nodejs',{year:8,desc:'Top6'});
+projects.set('php', {year: 20, desc: 'Top7'});
+projects.set('java', {year: 30, desc: 'Top1'});
+projects.set('python', {year: 23, desc: 'Top3'});
+projects.set('nodejs', {year: 8, desc: 'Top6'});
 console.log(projects);
 console.log(projects.keys());
 console.log(projects.values());
-console.log(projects.next());
-for(const project of projects){
-    const [category,content] = project;
-    console.log(category,content);
+// console.log(projects.next());
+for (const project of projects) {
+    const [category, content] = project;
+    console.log(category, content);
 }
 projects.forEach(function (value, key, map) {
-    console.log(value,key,map);
+    console.log(value, key, map);
 });
 
+const promise = new Promise(function (resolve, reject) {
+    // setTimeout(function () {
+    //     const success = {name: 'Hui Lee', address: 'ErQi'};
+    //     resolve(success);
+    // }, 1000);
 
+    setTimeout(function () {
+        const error = {msg: 'Ops, you had a problem'};
+        reject(error);
+    }, 3000);
+});
 
+promise.then(function (result) {
+    console.log(result);
+}, function (error) {
+    console.log(error);
+});
 
+function* superMan() {
+    const superStars = ['LiAn', 'FengXiaogang', 'ZhangYimou'];
+    for (const star of superStars) {
+        // console.log(star);
+        yield star;
+    }
+}
+
+// 获取迭代器，迭代次数为size+1
+const superLeer = superMan();
+
+console.log(superLeer.next());
+console.log(superLeer.next());
+
+function* createSundae() {
+    const toppings = [];
+
+    toppings.push(yield);
+    toppings.push(yield);
+    toppings.push(yield);
+
+    return toppings;
+}
+
+const it = createSundae();
+console.log(it.next('hot fudge'));
+// console.log(it.next('sprinkles'));
+// console.log(it.next('whipped cream'));
+// console.log(it.next());
+
+function* displayResponse() {
+    const response = yield;
+    console.log(`Your response is "${response}"!`);
+}
+
+const iterator = displayResponse();
+
+iterator.next(); // 开始运行生成器函数
+iterator.next('Hello Udacity Student'); // 将数据发送到生成器中
+// 上面的一行打印到控制台：你的响应是 "Hello Udacity Student"！
 
 
 
