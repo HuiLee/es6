@@ -123,30 +123,39 @@ console.log(superLeer.next());
 
 function* createSundae() {
     const toppings = [];
-
+    //step1
     toppings.push(yield);
+    //step2
     toppings.push(yield);
+    //step3
     toppings.push(yield);
 
     return toppings;
 }
 
 const it = createSundae();
-console.log(it.next('hot fudge'));
-// console.log(it.next('sprinkles'));
-// console.log(it.next('whipped cream'));
-// console.log(it.next());
+//第一次迭代yield返回undefined，传入的数据无法存入生成器中
+console.log(it.next('Hui Lee'));
+//第二次迭代yield返回undefined,会执行第一次断点代码保存数据
+console.log(it.next('sprinkles'));
+//第三次迭代yield返回undefined，会执行第二次断点的代码保存数据
+console.log(it.next('whipped cream'));
+//第四次迭代yield返回undefined，会执行第三次断电的代码保存数据
+console.log(it.next());
+//迭代结束，数组结果是['sprinkles','whipped cream','undefined']
 
 function* displayResponse() {
     const response = yield;
     console.log(`Your response is "${response}"!`);
 }
-
 const iterator = displayResponse();
+//遇到yield返回undefined，并保持断点；
+iterator.next();
+//继续断点位置，往下执行，穷尽迭代
+iterator.next('Okay');
 
-iterator.next(); // 开始运行生成器函数
-iterator.next('Hello Udacity Student'); // 将数据发送到生成器中
-// 上面的一行打印到控制台：你的响应是 "Hello Udacity Student"！
+
+
 
 
 
