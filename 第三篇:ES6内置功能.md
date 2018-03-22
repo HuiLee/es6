@@ -227,6 +227,12 @@ promise.then(function (result) {
 
 现实中，我们在函数的执行过程中会需要中断函数的执行进行其他的操作，然后继续执行，为满足这样的需求ED6中提供一种新的函数，叫做generator(生成器)函数！
 
+<font color=red>生成器是一种可以从中退出并在之后重新进入的函数。生成器的环境（绑定的变量）会在每次执行后被保存，下次进入时可继续使用。</font>
+
+<font color=red>调用一个生成器函数并不马上执行它的主体，而是返回一个这个生成器函数的迭代器（iterator）对象。当这个迭代器的next()方法被调用时。</font>
+
+<font color=red>生成器函数的主体会被执行直至第一个yield表达式，该表达式定义了迭代器返回的值，或者，被 yield*委派至另一个生成器函数。next()方法返回一个对象，该对象有一个value属性，表示产出的值，和一个done属性，表示生成器是否已经产出了它最后的值。</font>
+
 生成器函数的定义规则：
 
 1. function* name(){...}
@@ -239,6 +245,48 @@ promise.then(function (result) {
 
 关键字yield是ES6中新出现的关键字，只能用在生成器函数中，yield会导致生成器暂停下来
 
+<font color=red>yield 关键字用来暂停和继续一个生成器函数 (function* or legacy generator).
+
+yield 关键字使生成器函数暂停执行，并返回跟在它后面的表达式的当前值. 可以把它想成是 return 关键字的一个基于生成器的版本.
+
+yield 关键字实际返回一个对象，包含两个属性, value 和 done. value 属性为 yield expression 的值, done 是一个布尔值用来指示生成器函数是否已经全部完成.
+
+一旦在 yield expression 处暂停, 除非外部调用生成器的 next() 方法，否则生成器的代码将不能继续执行. 这使得可以对生成器的执行以及渐进式的返回值进行直接控制.
+</font>
+
+语法
+
+<font color=red>yield [[expression]];</font>
+
+expression
+
+用作返回值. 如果忽略, 将返回 undefined .
+
+#### yield*
+
+在生成器中，yield* 可以把需要 yield 的值委托给另外一个生成器或者其他任意的可迭代对象。
+
+<font color=red>yield* [[expression]];</font>
+
+expression
+
+任意的可迭代对象
+
+yield* 一个可迭代对象，就相当于把这个可迭代对象的所有迭代值分次 yield 出去。
+
+yield* 表达式本身的值就是当前可迭代对象迭代完毕（当done为true时）时的返回值。
+
+<font color=red>Generator.prototype.next()</font>
+
+返回 yield 表达式产生的值.
+
+<font color=red>Generator.prototype.return()</font>
+
+返回给定的值并结束生成器.
+
+<font color=red>Generator.prototype.throw()</font>
+
+向生成器抛出错误.
 
 ```js
 function* superMan() {
@@ -282,6 +330,9 @@ it.next();
 ```
 
 上面的输出结果很迷人，值得细细思索。
+
+
+
 
 ES6内置功能结业了:simple_smile:
 
