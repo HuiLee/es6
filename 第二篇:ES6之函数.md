@@ -2,6 +2,61 @@
 
 ES6重新定义了函数和类，增加了默认参数，类扩展，使得JS与其他语言有了真正意义的面向对象语法
 
+
+## 箭头函数
+
+箭头函数就是个简写形式的函数表达式，并且它拥有词法作用域的this值（即不会新产生自己作用域下的this, 参数, super 和 new.target 等对象）。此外，箭头函数总是匿名的。
+
+转换普通函数到箭头函数需要下面几个步骤：
+
+* 删掉关键字 function
+* 删掉圆括号
+* 删掉左右花括号
+* 删掉关键字 return
+* 删掉分号
+* 在参数列表和函数主体之间添加一个箭头（=>）
+
+```js
+const names = ['Afghanistan', 'Aruba', 'Bahamas', 'Chile', 
+'Fiji', 'Gabon', 'Luxembourg', 'Nepal', 'Singapore', 'Uganda', 'Zimbabwe'];
+
+// const longNames = names.filter(function(name) {
+//     return name.length > 6;
+// });
+
+const longNames = names.filter(name => name.length > 6);
+
+console.log(longNames);
+```
+
+普通函数可以是函数声明或函数表达式，但是箭头函数始终是表达式。实际上，它们的全称是“箭头函数表达式”，因此仅在表达式有效时才能使用，包括：
+
+* 存储在变量中，
+* 当做参数传递给函数，
+* 存储在对象的属性中。
+
+```js
+const greet = name => `Hello ${name}!`;
+
+greet('Hui');
+```
+
+如果你还记得，参数列表出现在箭头函数的箭头（即 =>）前面。如果列表中只有一个参数，那么可以像上述示例那样编写代码。但是，如果列表中有两个或多个参数，或者有零个，则需要将参数列表放在圆括号内：
+
+```js
+// 空参数列表需要括号
+const sayHi = () => console.log('Hello Udacity Student!');
+sayHi();
+```
+
+```js
+// 多个参数需要括号
+const orderIceCream = (flavor, cone) => console.log(`Here's your ${flavor} ice cream in a ${cone} cone.`);
+orderIceCream('chocolate', 'waffle');
+```
+
+头函数可以从周围上下文中继承了 this 值，因此在常规的使用中不需要重复的重复定义this值范围。
+
 ## 默认值和解构数组
 
 ES6之前声明函数参数式不可以使用默认参数的，同样声明的参数需要罗列出来，这样会使得参数很臃肿，

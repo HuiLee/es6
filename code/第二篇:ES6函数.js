@@ -81,3 +81,14 @@ class Man extends Person {
 const man = new Man('Hui Lee', 'man');
 
 console.log(man.work());
+
+
+const names = ['Afghanistan', 'Aruba', 'Bahamas', 'Chile', 'Fiji', 'Gabon', 'Luxembourg', 'Nepal', 'Singapore', 'Uganda', 'Zimbabwe'];
+
+// const longNames = names.filter(function(name) {
+//     return name.length > 6;
+// });
+
+const longNames = names.filter(name => name.length > 6);
+
+console.log(longNames);
